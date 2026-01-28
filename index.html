@@ -127,23 +127,61 @@
 </section>
 
 
-
-<section class="section hero ">
+<section class="section hero">
   <div class="container">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">XENON: Experience-based Knowledge Correction for Robust Planning in Minecraft</h2>
+      <h2 class="columns has-text-centered is-centered title is-4">TL;DR</h2>
+      <h2 class="columns has-text-centered is-centered title is-5">We introduce XENON, an LLM-based agent that robustly learns knowledge to achieve diverse goals, by autonomously interacting with an environment and correcting its own knowledge.</h2>
+      </div>
+    </div>
+</section>
+
+<section class="section hero">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+      <h2 class="columns has-text-centered is-centered title is-4">Why XENON?</h2>
+      <br>
+      <h2 class="columns has-text-centered is-centered title is-5">1. LLMs often have flawed prior knowledge, resulting in failures to achieve goals (i.e., items in Minecraft).</h2>
         <div class="publication-image">
           <!-- Image here -->
-          <embed src="static/images/main_figure_v2.jpg" alt="HUB" style="width: 100%; height: auto;"/>
-          <h2 class="subtitle has-text-centered">
-            HUB systematically evaluates unlearning methods across six key perspectives, covering 33 target concepts categorized into four dimensions: Celebrity, Style, IP, and NSFW. HUB provides an extensive set of 16,000 prompts per concept.
+          <img src="static/images/figure1.jpg" alt="figure1" style="width: 70%; height: auto;" />
+          <h2 class="subtitle has-text-centered is-6">
+            LLMs often begin with flawed knowledge about dependencies (i.e., requirements) and actions, both of which are essential knowledge for successful planning to achieve goals.
+          </h2>
+        </div>
+        <br>
+        <br>
+        <h2 class="columns has-text-centered is-centered title is-5">2. LLMs cannot robustly correct their flawed knowledge through simple prompting.</h2>
+        <div class="publication-image">
+          <!-- Image here -->
+          <img src="static/images/figure2.jpg" alt="figure2" style="width: 70%; height: auto;" />
+          <h2 class="subtitle has-text-centered is-6">
+            Even when prompted to self-correct with failure feedback, LLMs fail to correct their flawed knowledge.
+          </h2>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<section class="section hero">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+      <h2 class="columns has-text-centered is-centered title is-4">XENON: Experience-based knowledge correction</h2>
+        <div class="publication-image">
+          <!-- Image here -->
+          <img src="static/images/figure3.jpg" alt="figure3" style="width: 100%; height: auto;" />
+          <h2 class="subtitle has-text-centered is-6">
+            XENON corrects its knowledge using its own experience, without additional LLM inference for knowledge correction. <br>
+            [left] Adaptive Dependency Graph (ADG) is initialized with an LLM's dependency predictions for goal items and revises flawed dependency knowledge. Case 1: If an item is permanently failed to be obtained, it is identified as a hallucinated item and its descendants are recursively revised to remove the flawed dependency. Case 2: A flawed dependency is revised by referencing similar, successfully obtained items. <br>
+            [right] Failure-aware Action Memory (FAM) corrects action knowledge using past failures, preventing the agent from repeating failed actions.
           </h2>
         </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
 
@@ -152,61 +190,37 @@
   <div class="container">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-      <h2 class="columns has-text-centered is-centered title is-4">No single method outperforms in all perspectives</h2>
+      <h2 class="columns has-text-centered is-centered title is-4">Dependency and action learning experiments</h2>
         <div class="publication-image">
           <!-- Image here -->
-          <img src="static/images/ranking.jpg" alt="comparison table" style="width: 100%; height: auto;" />
+          <img src="static/images/figure4.jpg" alt="figure4" style="width: 70%; height: auto;" />
           <h2 class="subtitle has-text-centered is-6">
-            For each method and task, we compute the average performance across all concept categories as shown in the table below, and we then use the averages to rank the methods.        </div>
+            The y-axis shows the fraction of goal items whose dependencies are correctly learned. <br>
+            XENON robustly learns knowledge against flawed priors, outperforming previous state-of-the-art agents in dependency and action learning.
+          </h2>
+        </div>
         </div>
     </div>
 </section>
-
-
-
-
-<!-- Paper abstract -->
-
-<!-- End paper abstract -->
-
-<!-- Paper abstract -->
-
-
-
-<!-- Paper abstract -->
-<!-- <section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            As text-to-image diffusion models gain widespread commercial applications, there are increasing concerns about unethical or harmful use, including the unauthorized generation of copyrighted or sensitive content. Concept unlearning has emerged as a promising solution to these challenges by removing undesired and harmful information from the pre-trained model. However, the previous evaluations primarily focus on whether target concepts are removed while preserving image quality, neglecting the broader impacts such as unintended side effects. In this work, we propose Holistic Unlearning Benchmark (HUB), a comprehensive framework for evaluating unlearning methods across six key dimensions: faithfulness, alignment, pinpoint-ness, multilingual robustness, attack robustness, and efficiency. Our benchmark covers 33 target concepts, including 16,000 prompts per concept, spanning four categories: Celebrity, Style, Intellectual Property, and NSFW. Our investigation reveals that no single method excels across all evaluation criteria. By releasing our evaluation code and dataset, we hope to inspire further research in this area, leading to more reliable and effective unlearning methods.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-<!-- End paper abstract -->
-
-
 
 
 <section class="section hero">
   <div class="container">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-      <h2 class="columns has-text-centered is-centered title is-4">Comparison with previous methods and benchmarks</h2>
+      <h2 class="columns has-text-centered is-centered title is-4">Long-horizon goal planning experiments</h2>
         <div class="publication-image">
           <!-- Image here -->
-          <img src="static/images/comparison_table.jpg" alt="comparison table" style="width: 100%; height: auto;" />
+          <img src="static/images/figure5.jpg" alt="figure5" style="width: 90%; height: auto;" />
           <h2 class="subtitle has-text-centered is-6">
-            We use the abbreviations I, S, C, N, and O to denote Intellectual Property (IP), artist style (Style), Celebrity, NSFW, and Object, respectively. ✓ indicates that the method quantitatively evaluates the corresponding task.          </h2>
+            The numbers in the table show average success rate to achieve goals in MineRL environment. <br>
+            XENON significantly outperforms previous state-of-the-art agents in long-horizon goal planning.
+          </h2>
         </div>
         </div>
     </div>
 </section>
+
 
 
 <!--BibTex citation -->
